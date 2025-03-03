@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+          xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+          xsi:type="TaskPaneApp">
+
+  <!-- Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
+  <Id>37b5b3d9-c7ce-4106-9a3b-af7f0c0c7e4c</Id>
+  <Version>1.0.0</Version>
+  <ProviderName>Ollama Deep Researcher</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Ollama Deep Researcher" />
+  <Description DefaultValue="Deep research and content generation powered by Ollama" />
+  <IconUrl DefaultValue="http://localhost:2024/static/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="http://localhost:2024/static/icon-80.png" />
+  <SupportUrl DefaultValue="https://github.com/langchain-ai/ollama-deep-researcher" />
+
+  <!-- Domains that will be allowed when navigating. -->
+  <AppDomains>
+    <AppDomain>localhost</AppDomain>
+  </AppDomains>
+
+  <!-- Hosts supported by this add-in -->
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+
+  <!-- Default settings -->
+  <DefaultSettings>
+    <SourceLocation DefaultValue="http://localhost:2024/word-addin" />
+  </DefaultSettings>
+
+  <!-- Permissions needed -->
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <!-- Version Overrides -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url" />
+          
+          <!-- Ribbon Integration -->
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="CommandsGroup">
+                <Label resid="CommandsGroup.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
+                
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    
+    <!-- Resources -->
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="http://localhost:2024/static/icon-32.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="http://localhost:2024/static/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="http://localhost:2024/static/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="http://localhost:2024/word-addin" />
+        <bt:Url id="Taskpane.Url" DefaultValue="http://localhost:2024/word-addin" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/langchain-ai/ollama-deep-researcher" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with the Ollama Deep Researcher!" />
+        <bt:String id="CommandsGroup.Label" DefaultValue="Ollama Tools" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Ollama Deep Researcher" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="The Ollama Deep Researcher add-in is now loaded. Go to the Home tab and click the 'Ollama Deep Researcher' button to get started." />
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to open the Ollama Deep Researcher for research and content help." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

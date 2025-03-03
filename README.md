@@ -143,6 +143,48 @@ When accessing the LangGraph Studio UI:
   2. Disabling ad-blocking extensions
   3. Checking browser console for specific error messages
 
+## Word Add-in Integration
+
+Ollama Deep Researcher now includes a Microsoft Word Add-in that allows you to access the research and editing capabilities directly from within Word.
+
+### Installation
+
+To install the Word Add-in:
+
+1. Make sure the Ollama Deep Researcher server is running:
+   ```
+   python -m ollama_deep_researcher.main server
+   ```
+
+2. Run the Word Add-in setup script:
+   ```
+   python -m ollama_deep_researcher.main setup-word
+   ```
+
+3. Run the installation batch file:
+   ```
+   ./ollama_deep_researcher/static/install-word-addin.bat
+   ```
+
+4. Restart Microsoft Word to load the add-in.
+
+### Troubleshooting
+
+If the add-in doesn't appear:
+1. Make sure the server is running at http://localhost:2024
+2. Check that the manifest file was correctly installed in your Word STARTUP folder
+3. Try restarting Word after installation
+4. Check your Office settings to ensure add-ins are enabled
+
+### Features
+
+The Word Add-in provides two main features:
+
+1. **Edit**: Select text in your document, provide editing instructions, and let Ollama improve your content.
+2. **Research**: Enter a topic to research and get comprehensive markdown-formatted content with sources.
+
+All processing is done locally using your Ollama models.
+
 ## How it works
 
 Ollama Deep Researcher is inspired by [IterDRAG](https://arxiv.org/html/2410.04343v1#:~:text=To%20tackle%20this%20issue%2C%20we,used%20to%20generate%20intermediate%20answers.). This approach will decompose a query into sub-queries, retrieve documents for each one, answer the sub-query, and then build on the answer by retrieving docs for the second sub-query. Here, we do similar:

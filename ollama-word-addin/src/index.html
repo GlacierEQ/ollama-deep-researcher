@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ollama Deep Researcher</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-Fabric">
+    <div id="container">
+        <div class="header">
+            <h1 class="ms-font-xl">Ollama Deep Researcher</h1>
+        </div>
+        <div id="content" class="main">
+            <div class="section">
+                <div class="ms-Grid">
+                    <div class="ms-Grid-row">
+                        <div class="ms-Grid-col ms-sm12">
+                            <h2 class="ms-font-l">Research & Writing Assistant</h2>
+                            
+                            <div class="input-group">
+                                <label class="ms-font-m-plus" for="researchTopic">Research Topic:</label>
+                                <div class="input-with-button">
+                                    <input type="text" id="researchTopic" class="ms-TextField-field" placeholder="Enter a topic to research...">
+                                    <button class="ms-Button" id="researchButton">
+                                        <span class="ms-Button-label">Research</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="status-box" id="statusMessage">
+                                Ready for research
+                            </div>
+                            
+                            <div id="controls" class="controls-section">
+                                <h3 class="ms-font-m-plus">Document Actions</h3>
+                                <button class="ms-Button" id="insertButton" disabled>
+                                    <span class="ms-Button-label">Insert Research</span>
+                                </button>
+                                <button class="ms-Button" id="improveButton">
+                                    <span class="ms-Button-label">Improve Selection</span>
+                                </button>
+                                <button class="ms-Button" id="expandButton">
+                                    <span class="ms-Button-label">Expand Selection</span>
+                                </button>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3 class="ms-font-m-plus">Settings</h3>
+                                <div class="setting-item">
+                                    <label for="ollamaModel">Ollama Model:</label>
+                                    <select id="ollamaModel" class="ms-Dropdown">
+                                        <option value="llama3.2">Llama 3.2</option>
+                                        <option value="deepseek-r1:8b">DeepSeek R1 (8B)</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="researchDepth">Research Depth:</label>
+                                    <select id="researchDepth" class="ms-Dropdown">
+                                        <option value="1">Quick (1 cycle)</option>
+                                        <option value="2">Standard (2 cycles)</option>
+                                        <option value="3" selected>Deep (3 cycles)</option>
+                                        <option value="4">Thorough (4 cycles)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
